@@ -91,7 +91,8 @@ def main() -> None:
     print(f"{'exposure':22s} {'n':>4s} {'F':>6s}  {'IVW-RE OR (95% CI)':22s} {'p':>7s}  Egger_p  Steiger")
     for r in rows:
         if not r["converged"]:
-            print(f"{r['exposure']:22s} n={r['n']} (too few instruments)"); continue
+            print(f"{r['exposure']:22s} n={r['n']} (too few instruments)")
+            continue
         v = r["IVW_random"]
         ci = f"{v['or']:.2f} ({v['or_ci_low']:.2f}-{v['or_ci_high']:.2f})"
         print(f"{r['exposure']:22s} {r['n']:>4d} {r['mean_F']:>6.0f}  {ci:22s} {v['p']:>7.3g}  "

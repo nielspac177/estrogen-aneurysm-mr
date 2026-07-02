@@ -36,11 +36,29 @@ P 1.8e-25, 207 instruments (Michailidou 2017, GRCh37 build). This validates the
 instruments, genome build, matching, and power, so the aSAH null is credible
 evidence rather than a broken pipeline.
 
-### Optional extensions (not blocking)
+### Multi-exposure MR (done)
 
-Multi-exposure MR (add SHBG and testosterone; multivariable MR to resolve the
-Molenberg 2022 vs Tan/Wu 2025 SHBG conflict); proper r^2 LD clumping against a
-1000G panel in place of the current distance clumping.
+Same pipeline over three sex-hormone exposures against aSAH: none is significant.
+Age at natural menopause 1.03 (0.97 to 1.09). SHBG in women 0.73 (0.41 to 1.31),
+which leans opposite to Molenberg 2022 (OR 1.18) and toward Tan/Wu 2025, but the
+interval is too wide to resolve their conflict. Total testosterone 0.98 (0.77 to
+1.27), with a mild directional-pleiotropy flag (Egger intercept P 0.04). Script:
+`run_mr_multiexposure.py`.
+
+### Clumping sensitivity (done)
+
+Full r^2 clumping needs a genotype reference and rsIDs, and the menopause file
+carries chr:pos identifiers only. Instead we varied the distance-clumping window
+from 250 kb to 5 Mb. The estimates are stable: age at menopause stays near 1.03
+(n 61 to 107) and SHBG stays between 0.70 and 0.78, so clumping stringency does not
+drive the result and r^2 clumping would land within this range. Script:
+`run_mr_clumping_sensitivity.py`.
+
+### Remaining (optional)
+
+Multivariable MR of SHBG with bioavailable testosterone would need a sex-matched
+bioavailable-testosterone file; proper r^2 clumping would need PLINK plus a 1000G
+panel and a position-to-rsID map for the menopause instruments.
 
 ## Run
 
