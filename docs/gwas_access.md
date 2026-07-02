@@ -1,10 +1,10 @@
 # How to access the GWAS summary statistics (for another agent)
 
-Two-sample MR needs only **public summary statistics** — no individual data, no
+Two-sample MR needs only **public summary statistics**, no individual data, no
 PLINK, no special genomics libraries. Everything below was done with `curl` +
 Python (pandas). All files here are **GRCh37/hg19**.
 
-## Outcome — intracranial aneurysm / aSAH (Bakker et al. 2020, Nat Genet)
+## Outcome, intracranial aneurysm / aSAH (Bakker et al. 2020, Nat Genet)
 
 Hosted on **Figshare**, public, no auth. Use the Figshare API to get download URLs:
 
@@ -21,7 +21,7 @@ curl -sL "https://ndownloader.figshare.com/files/29146425" -o bakker_sah_euro_no
   `N` is **effective** N = 4·Ncase·Ncontrol/(Ncase+Ncontrol) (max ≈17k for aSAH-Euro).
 - **Pick the UKB-excluded file** if your exposure GWAS used UK Biobank (see overlap).
 
-## Exposures — reproductive timing (ReproGen)
+## Exposures, reproductive timing (ReproGen)
 
 Direct download from reprogen.org. Find the link by scraping the page:
 
@@ -35,7 +35,7 @@ curl -sL "https://www.reprogen.org/reprogen_ANM_201K_170621.txt.gz" -o anm_ruth2
 - Gotcha: ANM `SNP` IDs are `chr:pos[:type]` (not rsIDs), so **match to the outcome
   by CHR:POS**, not rsID. INDEL rows exist.
 
-## Exposures — sex hormones (Ruth et al. 2020, Nat Med; SHBG, testosterone)
+## Exposures, sex hormones (Ruth et al. 2020, Nat Med; SHBG, testosterone)
 
 **GWAS Catalog** (EBI FTP), accessions GCST90012103 (bioT), GCST90012109/…111 (SHBG),
 GCST90012113 (total T). Harmonised TSVs under
@@ -43,7 +43,7 @@ GCST90012113 (total T). Harmonised TSVs under
 
 ## Instrument selection & matching (summary-stats only)
 
-1. Filter exposure to genome-wide significant SNPs (`Pval < 5e-8`) — do it with
+1. Filter exposure to genome-wide significant SNPs (`Pval < 5e-8`), do it with
    `awk` before loading (files are 10M+ rows).
 2. **Clumping:** no PLINK here → **distance clumping** (keep lowest-p SNP, drop
    others within ±1 Mb/chr) as an approximation. Proper r²-clumping needs a 1000G

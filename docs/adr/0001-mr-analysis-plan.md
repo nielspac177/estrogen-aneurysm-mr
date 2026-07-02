@@ -46,6 +46,6 @@ unruptured IA. Estimand: per-SD (or per-year for menopause) causal log-OR.
 ## Interpretation guard
 
 A positive finding is credible only if IVW, weighted median, and MR-Egger agree in
-direction, the Egger intercept is null, and it survives leave-one-out — and even
+direction, the Egger intercept is null, and it survives leave-one-out, and even
 then it is a genetic-liability estimate, to be triangulated with the (future)
 registry target-trial emulation, not equated with an HRT treatment effect.
