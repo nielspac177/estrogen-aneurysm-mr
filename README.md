@@ -45,20 +45,21 @@ interval is too wide to resolve their conflict. Total testosterone 0.98 (0.77 to
 1.27), with a mild directional-pleiotropy flag (Egger intercept P 0.04). Script:
 `run_mr_multiexposure.py`.
 
-### Clumping sensitivity (done)
+### Multivariable MR (done)
 
-Full r^2 clumping needs a genotype reference and rsIDs, and the menopause file
-carries chr:pos identifiers only. Instead we varied the distance-clumping window
-from 250 kb to 5 Mb. The estimates are stable: age at menopause stays near 1.03
-(n 61 to 107) and SHBG stays between 0.70 and 0.78, so clumping stringency does not
-drive the result and r^2 clumping would land within this range. Script:
-`run_mr_clumping_sensitivity.py`.
+SHBG and bioavailable testosterone in women, jointly, on aSAH (106 SNPs): both
+null (SHBG 1.06 [0.50 to 2.28], bioavailable testosterone 1.03 [0.57 to 1.86]). The
+SHBG point estimate moves from 0.73 (univariable) to 1.06 once testosterone is held
+fixed, so the univariable SHBG signal was in part its shared testosterone. The data
+cannot resolve the Molenberg 2022 vs Tan/Wu 2025 conflict. Script: `run_mvmr.py`.
 
-### Remaining (optional)
+### r^2 LD clumping (done)
 
-Multivariable MR of SHBG with bioavailable testosterone would need a sex-matched
-bioavailable-testosterone file; proper r^2 clumping would need PLINK plus a 1000G
-panel and a position-to-rsID map for the menopause instruments.
+Real reference-panel clumping (PLINK 2, 1000 Genomes European, r^2 < 0.001 over
+10 Mb, with a chr:pos to rsID map for the menopause instruments) gives the same
+answer as distance clumping: age at menopause on aSAH, IVW-RE OR 1.03 (0.98 to
+1.09), 81 instruments. The distance-window sensitivity (250 kb to 5 Mb) is also
+stable (1.02 to 1.03). Scripts: `run_mr_ld_clump.py`, `run_mr_clumping_sensitivity.py`.
 
 ## Run
 
