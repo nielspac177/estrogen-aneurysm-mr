@@ -45,7 +45,8 @@ def _load_catalog(path):
 def _extract_by_keys(path, keys):
     """awk full GWAS-catalog file for rows whose CHR:POS is in the key set."""
     kf = tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False)
-    kf.write("\n".join(keys)); kf.close()
+    kf.write("\n".join(keys))
+    kf.close()
     of = tempfile.NamedTemporaryFile("w", suffix=".tsv", delete=False)
     subprocess.run(["bash", "-c",
         f"gzcat '{path}' | awk 'FNR==NR{{k[$1];next}} FNR==1{{print;next}} (($2\":\"$3) in k)' "
