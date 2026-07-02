@@ -14,3 +14,9 @@ __pycache__/
 .DS_Store
 ._*
 graphify-out/
+data/ldref/
+*.tgz
+*.zip
+*.bed
+*.bim
+*.fam
