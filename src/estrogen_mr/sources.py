@@ -28,7 +28,7 @@ EXPOSURES = {
         "study": "Ruth et al. 2021, Nature (ReproGen)",
         "n": 201323,
         "source": "reprogen.org (reprogen_ANM_201K_170621.txt.gz)",
-        "note": "CONTINUOUS age at natural menopause: the untested gap. AF removed (need ref panel).",
+        "note": "CONTINUOUS age at natural menopause: the untested gap. AF removed.",
     },
     "age_at_menarche": {
         "study": "Day et al. 2017, Nat Genet (ReproGen)",
